@@ -30,42 +30,43 @@ namespace TicTacToe
         public bool IsWinning(char symbol)
         {
             //Horiz
-            for (var y = 0; y < _board.GetLength(0); y++)
+            var size = _board.GetLength(0);
+            for (var y = 0; y < size; y++)
             {
                 var countX = 0;
-                for (var x = 0; x < _board.GetLength(1); x++)
+                for (var x = 0; x < size; x++)
                 {
                     if (_board[y, x] == symbol)
                         countX++;
                 }
-                if (countX == _board.GetLength(0))
+                if (countX == size)
                     return true;
             }
 
             //Vert
-            for (var x = 0; x < _board.GetLength(1); x++)
+            for (var x = 0; x < size ; x++)
             {
                 var countY = 0;
-                for (var y = 0; y < _board.GetLength(0); y++)
+                for (var y = 0; y < size; y++)
                 {
                     if (_board[y, x] == symbol)
                         countY++;
                 }
-                if (countY == _board.GetLength(0))
+                if (countY == size)
                     return true;
             }
 
             //diagonal
             var count = 0;
-            for (var y = 0; y < _board.GetLength(0); y++)
+            for (var y = 0; y < size; y++)
             {
-                for (var x = 0; x < _board.GetLength(1); x++)
+                for (var x = 0; x < size; x++)
                 {
                     if (x == y && _board[y, x] == symbol)
                         count++;
                 }
 
-                if (count == _board.GetLength(0))
+                if (count == size)
                     return true;
             }
 
@@ -81,8 +82,6 @@ namespace TicTacToe
                 if (count == _board.GetLength(0))
                     return true;
             }
-
-
 
             return false;
         }
